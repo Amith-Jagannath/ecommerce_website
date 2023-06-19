@@ -270,7 +270,7 @@ app.post("/nike", async function (req, res) {
 });
 app.post("/shoes", async function (req, res) {
   try {
-    const shoes_details = await Product.find({});
+    const shoes_details = [];
     //   res.send(shoes_details);
     // console.log(shoes_details);
     // console.log(shoes_details);
