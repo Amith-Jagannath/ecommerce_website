@@ -7,6 +7,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>sneakX</title>
 	<link rel="stylesheet" href="assests/style.css">
+	<link rel="icon" type="image/x-icon" href="./assests/images/favicon.ico" />
 	<!-- CSS only -->
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
 		integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
@@ -38,7 +39,7 @@
 			<div class="collapse navbar-collapse" id="navbarsExampleXxl">
 				<ul class="navbar-nav me-auto mb-2 mb-lg-0 mx-5 ps-0">
 					<li class="nav-item">
-						<form id="form_male" action="/male" method="get">
+						<form id="form_male" action="/male" method="post">
 							<a href="javascript:;" onclick="document.getElementById('form_male').submit();"
 								class="nav-link active me-3">MALE</a>
 							<!-- <input type="submit" class="bg-tranparent" value="SHOP"> -->
@@ -48,7 +49,7 @@
 					<li class="nav-item">
 						
 
-						<form id="form_female" action="/female" method="get">
+						<form id="form_female" action="/female" method="post">
 							<a href="javascript:;" onclick="document.getElementById('form_female').submit();"
 								class="nav-link active me-3">FEMALE</a>
 							<!-- <input type="submit" class="bg-tranparent" value="SHOP"> -->
@@ -60,7 +61,7 @@
 <!-- <div></div> -->
 					<li class="nav-item me-3 ">
 						<!-- <a class="nav-link active" aria-current="page" onclick="" href="anchor_click()">SHOP</a> -->
-						<form id="form_shop" action="/shoes" method="get">
+						<form id="form_shop" action="/shoes" method="post">
 							<a href="javascript:;" onclick="document.getElementById('form_shop').submit();"
 								class="nav-link active me-3">SHOP</a>
 							<!-- <input type="submit" class="bg-tranparent" value="SHOP"> -->
@@ -69,7 +70,7 @@
 					</li>
 					<li class="nav-item">
 						<div class="searchbar" style="margin-left: 2px !important;">
-							<form class="d-flex p-90px ms-1" role="search" action="/search_box" method="get">
+							<form class="d-flex p-90px ms-1" role="search" action="/search_box" method="post">
 								<input class=" search-input form-control w-75 me-2" type="search" placeholder="Search"
 									name="shoe_name" name="" aria-label="Search"
 									style="width: 280px !important ; height:43px !important ">
@@ -92,13 +93,13 @@
 
 
 					<li class="nav-item">
-						<form action="/cart" method="get">
+						<form action="/cart" method="post">
 							<button class=" cart btn btn-outline-light text-dark "><i
 									class="fa-solid fa-cart-shopping"></i></button>
 						</form>
 					</li>
 					<li class="nav-item">
-						<form action="/logout" method="get">
+						<form action="/logout" method="post">
 							<button class=" logout btn btn-outline-light text-dark "><i
 									class="fa-solid fa-right-from-bracket"></i></button>
 						</form>
@@ -116,7 +117,7 @@
 		<!-- <button class="btn--close-modal-register">&times;</button> -->
 		<button type="button" class="btn-close btn--close-modal-register" aria-label="Close"></button>
 		<h1 class="modal__header">Register</h1>
-		<form action="/register" method="get">
+		<form action="/register" method="post">
 			<div class="input-field">
 				<input type="text" id="nameRegister" placeholder="Your Name" name="username" />
 			</div>
@@ -142,7 +143,7 @@
 		<!-- <button class="btn--close-modal-login">&times;</button> -->
 		<button type="button" class="btn-close btn--close-modal-login" aria-label="Close"></button>
 		<h1 class="modal__header">Login</h1>
-		<form action="/login" method="get">
+		<form action="/login" method="post">
 			<input type="text" id="emailLogin" placeholder="Email" name="email" />
 			<input type="password" id="passwordLogin" placeholder="password" name="password" />
 
@@ -158,7 +159,7 @@
 
 		<div id="branding-carousel" class="carousel slide " data-ride="false">
 			<div class="carousel-inner">
-				<form action="/individualshoe" method="get">
+				<form action="/individualshoe" method="post">
 					<div class="carousel-item active ">
 						<div class="shoe-front-content">
 							<h1 class="shoe-title">NIKE AIR MAX</h1>
@@ -172,7 +173,7 @@
 
 
 
-							<form action="/addToCart" method="get">
+							<form action="/addToCart" method="post">
 								<input type="hidden" value="32" name="id"> 
 								<button type="submit" class="btn btn-light add-to-cart" id="add">BUY NOW</button>
 								
@@ -181,7 +182,7 @@
 						</div>
 					</div>
 				</form>
-				<form action="/individualshoe" method="get">
+				<form action="/individualshoe" method="post">
 					<div class="carousel-item">
 						<div class="shoe-front-content">
 							<h1 class="shoe-title">PUMA X FERRARI</h1>
@@ -196,7 +197,7 @@
 						</div>
 					</div>
 				</form>
-				<form action="/individualshoe" method="get">
+				<form action="/individualshoe" method="post">
 					<div class="carousel-item">
 						<div class="shoe-front-content">
 							<h1 class="shoe-title">ADIDAS 4DFWD 2</h1>
@@ -241,7 +242,7 @@
 		<h2 class="collections">COLLECTIONS</h2>
 		<div class="row" align="center">
 			<div class="col-lg-4 my-2">
-				<form id="form_male1" action="/male" method="get">
+				<form id="form_male1" action="/male" method="post">
 					<a href="javascript:;" onclick="document.getElementById('form_male1').submit();"
 						class="nav-link active me-3"><img src="./assests/images/MAN-F.jpg" alt="" class="select"></a>
 					<!-- <input type="submit" class="bg-tranparent" value="SHOP"> -->
@@ -250,7 +251,7 @@
 
 			</div>
 			<div class="col-lg-4 my-2">
-				<form id="form_female1" action="/female" method="get">
+				<form id="form_female1" action="/female" method="post">
 					<a href="javascript:;" onclick="document.getElementById('form_female1').submit();"
 						class="nav-link active me-3"><img src="./assests/images/WOMEN.jpg" alt="" class="select"></a>
 					<!-- <input type="submit" class="bg-tranparent" value="SHOP"> -->
@@ -268,7 +269,7 @@
 	<section class="section" id="jordan-section">
 		<div class="jordan-content">
 			<h class="jordan-heading">Leap High.<br>Feel the Sky.<br>Jordan Shoes<br> in the House.</h>
-			<form id="form2" action="/nike" method="get">
+			<form id="form2" action="/nike" method="post">
 				<a href="javascript:;" onclick="document.getElementById('form2').submit();"
 					class="dropdown-item"><button
 						class=" nav-item shop-jordan btn btn-outline-light text-secondary  ">SHOP</button></a>

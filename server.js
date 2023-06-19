@@ -13,7 +13,7 @@ function validatePhone(num) {
 }
 
 const express = require("express"); //interact with html file
-const bodyParser = require("body-parser"); //to get data from user
+const bodyParser = require("body-parser"); //to.post data from user
 const mongoose = require("mongoose"); //package to connect to db
 const hbs = require("express-handlebars"); //used for hbs file soo as to use js componenets for displaying images
 const { handlebars } = require("hbs");
@@ -173,14 +173,14 @@ const createDoc = async () => {
 console.log("Yepp");
 console.log(path);
 var session;
-app.get("/", function (req, res) {
+app.post("/", function (req, res) {
   //used to identify user sessions
   res.sendFile("/index.html");
 });
-app.get("/home", async function (req, res) {
+app.post("/home", async function (req, res) {
   res.sendFile(path + "/index.html");
 });
-app.get("/shoes", async function (req, res) {
+app.post("/shoes", async function (req, res) {
   const shoes_details = await Product.find({});
   //   res.send(shoes_details);
   // console.log(shoes_details);
@@ -188,7 +188,7 @@ app.get("/shoes", async function (req, res) {
   res.render("shop", { info: shoes_details });
 });
 
-app.get("/register", async function (req, res) {
+app.post("/register", async function (req, res) {
   try {
     const values = req.body;
     if (
@@ -226,7 +226,7 @@ app.get("/register", async function (req, res) {
   }
 });
 
-app.get("/login", async function (req, res) {
+app.post("/login", async function (req, res) {
   try {
     const values = req.body;
     session = req.session;
@@ -253,7 +253,7 @@ app.get("/login", async function (req, res) {
   }
 });
 
-app.get("/individualshoe", async function (req, res) {
+app.post("/individualshoe", async function (req, res) {
   const val = req.body.product_id;
 
   const shoes_det = await Product.findOne({ product_id: val });
@@ -263,7 +263,7 @@ app.get("/individualshoe", async function (req, res) {
   console.log("yes");
 });
 console.log(path);
-app.get("/nike", async function (req, res) {
+app.post("/nike", async function (req, res) {
   console.log("yes");
   const nike = await Product.find({ name: "nike" });
   console.log(nike);
@@ -273,38 +273,38 @@ app.get("/nike", async function (req, res) {
   // res.send("nike");
 });
 
-app.get("/puma", async function (req, res) {
+app.post("/puma", async function (req, res) {
   const puma = await Product.find({ name: "puma" });
   res.render("shop", { info: puma });
 });
-app.get("/addidas", async function (req, res) {
+app.post("/addidas", async function (req, res) {
   const adidas = await Product.find({ name: "adidas" });
   res.render("shop", { info: adidas });
 });
-app.get("/sparx", async function (req, res) {
+app.post("/sparx", async function (req, res) {
   const sparx = await Product.find({ name: "sparx" });
   res.render("shop", { info: sparx });
 });
 
-app.get("/search_box", async function (req, res) {
+app.post("/search_box", async function (req, res) {
   const name = req.body.shoe_name.toLowerCase();
   const shoes = await Product.find({ name: name });
   res.render("shop", { info: shoes });
 });
 
-app.get("/male", async function (req, res) {
+app.post("/male", async function (req, res) {
   const male_shoe = await Product.find({ gender: "male" });
   res.render("shop", { info: male_shoe });
 });
-app.get("/female", async function (req, res) {
+app.post("/female", async function (req, res) {
   const female_shoe = await Product.find({ gender: "female" });
   res.render("shop", { info: female_shoe });
 });
-app.get("/crocs", async function (req, res) {
+app.post("/crocs", async function (req, res) {
   const crocs = await Product.find({ name: "crocs" });
   res.render("shop", { info: crocs });
 });
-app.get("/under5k", async function (req, res) {
+app.post("/under5k", async function (req, res) {
   // await Product.find({
   //     $and: [{ costInVal: {} }, { diet_id: req.body.id }],
   // });
@@ -313,7 +313,7 @@ app.get("/under5k", async function (req, res) {
   res.render("shop", { info: under5k });
 });
 
-app.get("/addToCart", async function (req, res) {
+app.post("/addToCart", async function (req, res) {
   console.log(session.userid);
   await Cart.find().sort({ cart_id: -1 });
   if (session == undefined) res.render("index", { message: "Kindly Login" });
@@ -351,7 +351,7 @@ app.get("/addToCart", async function (req, res) {
 //   },
 // ]);
 
-app.get("/cart", async function (req, res) {
+app.post("/cart", async function (req, res) {
   if (session == undefined) res.sendFile(path + "/index.html");
   else {
     const result = await Product.aggregate[
@@ -431,7 +431,7 @@ app.get("/cart", async function (req, res) {
     res.render("cart", { info: ans });
   }
 });
-app.get("/checkout", async function (req, res) {
+app.post("/checkout", async function (req, res) {
   const id = req.body.id;
   if (session == undefined) res.sendFile(path + "/index.html");
   const product = await Product.findOne({ product_id: id });
@@ -440,7 +440,7 @@ app.get("/checkout", async function (req, res) {
   console.log(product);
   res.render("checkout", { info: product });
 });
-app.get("/delete", async function (req, res) {
+app.post("/delete", async function (req, res) {
   console.log("delete");
   console.log(req.body.id);
   const shoe = await Product.find({ product_id: req.body.id });
@@ -483,24 +483,24 @@ app.get("/delete", async function (req, res) {
   res.render("cart", { info: ans });
 });
 
-app.get("/under2k", async function (req, res) {
+app.post("/under2k", async function (req, res) {
   const result = await Product.find({ costInVal: { $lt: 2500 } });
   res.render("shop", { info: result });
 });
-app.get("/under2-5k", async function (req, res) {
+app.post("/under2-5k", async function (req, res) {
   const result = await Product.find({ costInVal: { $gt: 2500, $lt: 5000 } });
   res.render("shop", { info: result });
 });
-app.get("/under5-7k", async function (req, res) {
+app.post("/under5-7k", async function (req, res) {
   const result = await Product.find({ costInVal: { $gt: 5000, $lt: 7500 } });
   res.render("shop", { info: result });
 });
-app.get("/under7k", async function (req, res) {
+app.post("/under7k", async function (req, res) {
   const result = await Product.find({ costInVal: { $gt: 7500 } });
   res.render("shop", { info: result });
 });
 
-app.get("/logout", async function (req, res) {
+app.post("/logout", async function (req, res) {
   req.session.destroy();
   res.sendFile(path + "/index.html");
 });
