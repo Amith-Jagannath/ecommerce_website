@@ -72,6 +72,9 @@ app.use(
     resave: false,
   })
 );
+app.get("/favicon.ico", (req, res) => {
+  res.status(204).end();
+});
 
 app.listen(server_port, function () {
   console.log("Listening on port %d", server_port);
