@@ -183,13 +183,6 @@ app.post("/", function (req, res) {
 app.post("/home", async function (req, res) {
   res.sendFile(path + "/index.html");
 });
-app.post("/shoes", async function (req, res) {
-  const shoes_details = await Product.find({});
-  //   res.send(shoes_details);
-  // console.log(shoes_details);
-  // console.log(shoes_details);
-  res.render("shop", { info: shoes_details });
-});
 
 app.post("/register", async function (req, res) {
   try {
@@ -275,7 +268,17 @@ app.post("/nike", async function (req, res) {
   res.render("shop", { info: nike });
   // res.send("nike");
 });
-
+app.post("/shoes", async function (req, res) {
+  try {
+    const shoes_details = await Product.find({});
+    //   res.send(shoes_details);
+    // console.log(shoes_details);
+    // console.log(shoes_details);
+    res.render("shop", { info: shoes_details });
+  } catch (err) {
+    console.log(err);
+  }
+});
 app.post("/puma", async function (req, res) {
   const puma = await Product.find({ name: "puma" });
   res.render("shop", { info: puma });
