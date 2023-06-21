@@ -20,9 +20,10 @@ const { handlebars } = require("hbs");
 const cookieParser = require("cookie-parser"); //used to store cookies for user sessions
 const sessions = require("express-session");
 const jsonMerger = require("json-merger");
-// const oneDay = 1000 * 60 * 60 * 24;
-const oneDay = 20;
-const path = __dirname; //+ "/public/views";
+
+const oneDay = 1000 * 60 * 60 * 24;
+
+//const path = __dirname; //+ "/public/views";
 // var jsonMerger = require("json-merger");
 // mongoose
 //   .connect("mongodb://localhost:27017/SneakX", {
@@ -53,9 +54,11 @@ mongoose
     console.log(e);
   });
 const app = express();
+app.use(express.static(__dirname + "/views"));
+const path = __dirname + "/views";
 app.set("view engine", "hbs"); //view engine for handlebars page
+
 app.use(express.static(__dirname));
-// const path = __dirname;
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -178,7 +181,7 @@ console.log(path);
 var session;
 app.post("/", function (req, res) {
   //used to identify user sessions
-  res.sendFile("/index.html");
+  res.sendFile(path + "/index.html");
 });
 app.post("/home", async function (req, res) {
   res.sendFile(path + "/index.html");
@@ -270,7 +273,7 @@ app.post("/nike", async function (req, res) {
 });
 app.post("/shoes", async function (req, res) {
   try {
-    const shoes_details = [];
+    const shoes_details = await Product.find({});
     //   res.send(shoes_details);
     // console.log(shoes_details);
     // console.log(shoes_details);

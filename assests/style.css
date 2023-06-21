@@ -675,3 +675,28 @@ form button {
   padding-left: 58px;
   padding-top: 15px;
 }
+
+/* Styles for screens smaller than 600px */
+@media (max-width: 600px) {
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+}
+
+/* Styles for screens between 601px and 1200px */
+@media (min-width: 601px) and (max-width: 1200px) {
+  img {
+    max-width: 50%;
+    height: auto;
+  }
+}
+
+/* Styles for screens larger than 1200px */
+@media (min-width: 1201px) {
+  img {
+    max-width: 30%;
+    height: auto;
+  }
+}
+
