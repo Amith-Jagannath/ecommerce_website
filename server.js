@@ -259,7 +259,7 @@ app.post("/individualshoe", async function (req, res) {
   const shoes_det = await Product.findOne({ product_id: val });
   console.log(shoes_det);
   console.log(val);
-  res.render("detail", { info: shoes_det });
+  res.render("detail.hbs", { info: shoes_det });
   console.log("yes");
 });
 console.log(path);
@@ -269,7 +269,7 @@ app.post("/nike", async function (req, res) {
   console.log(nike);
 
   // res.render("shop", { info: nike });
-  res.render("shop", { info: nike });
+  res.render("shop.hbs", { info: nike });
   // res.send("nike");
 });
 app.post("/shoes", async function (req, res) {
@@ -278,41 +278,41 @@ app.post("/shoes", async function (req, res) {
     //   res.send(shoes_details);
     // console.log(shoes_details);
     // console.log(shoes_details);
-    res.render("shop", { info: shoes_details });
+    res.render("shop.hbs", { info: shoes_details });
   } catch (err) {
     console.log(err);
   }
 });
 app.post("/puma", async function (req, res) {
   const puma = await Product.find({ name: "puma" });
-  res.render("shop", { info: puma });
+  res.render("shop.hbs", { info: puma });
 });
 app.post("/addidas", async function (req, res) {
   const adidas = await Product.find({ name: "adidas" });
-  res.render("shop", { info: adidas });
+  res.render("shop.hbs", { info: adidas });
 });
 app.post("/sparx", async function (req, res) {
   const sparx = await Product.find({ name: "sparx" });
-  res.render("shop", { info: sparx });
+  res.render("shop.hbs", { info: sparx });
 });
 
 app.post("/search_box", async function (req, res) {
   const name = req.body.shoe_name.toLowerCase();
   const shoes = await Product.find({ name: name });
-  res.render("shop", { info: shoes });
+  res.render("shop.hbs", { info: shoes });
 });
 
 app.post("/male", async function (req, res) {
   const male_shoe = await Product.find({ gender: "male" });
-  res.render("shop", { info: male_shoe });
+  res.render("shop.hbs", { info: male_shoe });
 });
 app.post("/female", async function (req, res) {
   const female_shoe = await Product.find({ gender: "female" });
-  res.render("shop", { info: female_shoe });
+  res.render("shop.hbs", { info: female_shoe });
 });
 app.post("/crocs", async function (req, res) {
   const crocs = await Product.find({ name: "crocs" });
-  res.render("shop", { info: crocs });
+  res.render("shop.hbs", { info: crocs });
 });
 app.post("/under5k", async function (req, res) {
   // await Product.find({
@@ -320,7 +320,7 @@ app.post("/under5k", async function (req, res) {
   // });
   const under5k = Product.find({ costInVal: { $lt: 5000 } });
   console.log(under5k);
-  res.render("shop", { info: under5k });
+  res.render("shop.hbs", { info: under5k });
 });
 
 app.post("/addToCart", async function (req, res) {
@@ -347,7 +347,7 @@ app.post("/addToCart", async function (req, res) {
 
   await cartItem.save();
   const shoe = await Product.find({ product_id: req.body.id });
-  res.render("detail", { info: shoe });
+  res.render("detail.hbs", { info: shoe });
 });
 
 // Product.aggregate([
@@ -438,7 +438,7 @@ app.post("/cart", async function (req, res) {
     // const resul = await cart_product.find({});
     console.log(ans);
     // const resu = await Product_cart.find({});
-    res.render("cart", { info: ans });
+    res.render("cart.hbs", { info: ans });
   }
 });
 app.post("/checkout", async function (req, res) {
@@ -448,7 +448,7 @@ app.post("/checkout", async function (req, res) {
   const user = await Customer.findOne({ customer_id: session.userid });
   var result = jsonMerger.mergeObjects([product, user]);
   console.log(product);
-  res.render("checkout", { info: product });
+  res.render("checkout.hbs", { info: product });
 });
 app.post("/delete", async function (req, res) {
   console.log("delete");
@@ -490,24 +490,24 @@ app.post("/delete", async function (req, res) {
     ],
   ]);
   console.log(ans);
-  res.render("cart", { info: ans });
+  res.render("cart.hbs", { info: ans });
 });
 
 app.post("/under2k", async function (req, res) {
   const result = await Product.find({ costInVal: { $lt: 2500 } });
-  res.render("shop", { info: result });
+  res.render("shop.hbs", { info: result });
 });
 app.post("/under2-5k", async function (req, res) {
   const result = await Product.find({ costInVal: { $gt: 2500, $lt: 5000 } });
-  res.render("shop", { info: result });
+  res.render("shop.hbs", { info: result });
 });
 app.post("/under5-7k", async function (req, res) {
   const result = await Product.find({ costInVal: { $gt: 5000, $lt: 7500 } });
-  res.render("shop", { info: result });
+  res.render("shop.hbs", { info: result });
 });
 app.post("/under7k", async function (req, res) {
   const result = await Product.find({ costInVal: { $gt: 7500 } });
-  res.render("shop", { info: result });
+  res.render("shop.hbs", { info: result });
 });
 
 app.post("/logout", async function (req, res) {
