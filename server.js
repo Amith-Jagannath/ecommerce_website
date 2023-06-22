@@ -176,17 +176,18 @@ const createDoc = async () => {
   }
 };
 // createDoc();
-console.log("Yepp");
-console.log(path);
+
 var session;
-app.post("/", function (req, res) {
+
+app.get("/", function (req, res) {
   //used to identify user sessions
   res.sendFile(path + "/index.html");
 });
-app.post("/home", async function (req, res) {
-  res.sendFile(path + "/index.html");
-});
 
+app.post("/home", function (req, res) {
+  res.sendFile(path + "/index.html");
+  // global_id=null;
+});
 app.post("/register", async function (req, res) {
   try {
     const values = req.body;
