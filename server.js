@@ -69,7 +69,7 @@ console.log(server_port);
 app.use(
   sessions({
     //this the data sent and stored in brower cookie
-    secret: "thisismysecrctekeyfhrgfgrfrty84fwir767",
+    secret: "thisismysecrctekeyfhrgfgrfhygcdghddrr",
     saveUninitialized: true,
     cookie: { maxAge: oneDay },
     resave: false,
@@ -177,7 +177,7 @@ const createDoc = async () => {
 };
 // createDoc();
 
-var session;
+let session;
 
 app.get("/", function (req, res) {
   //used to identify user sessions
