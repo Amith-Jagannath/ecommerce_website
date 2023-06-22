@@ -22,7 +22,7 @@ const sessions = require("express-session");
 const jsonMerger = require("json-merger");
 
 const oneDay = 1000 * 60 * 60 * 24;
-
+mongoose.set("strictQuery", false);
 //const path = __dirname; //+ "/public/views";
 // var jsonMerger = require("json-merger");
 // mongoose
