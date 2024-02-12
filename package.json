@@ -15,8 +15,8 @@
     "express-session": "^1.17.3",
     "hbs": "^4.2.0",
     "json-merger": "^1.1.9",
-    "mongoose": "^6.8.1",
+    "mongoose": "^8.0.0",
     "nodemon": "^2.0.20",
-    "vercel": "^30.2.3"
+    "vercel": "^31.2.0"
   }
 }
